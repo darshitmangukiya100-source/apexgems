@@ -1,0 +1,619 @@
+```html
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<title>Apexgems | Natural & Lab Grown Diamonds</title>
+
+<style>
+*{
+    margin:0;
+    padding:0;
+    box-sizing:border-box;
+}
+
+body{
+    font-family: Arial, Helvetica, sans-serif;
+    background:#ffffff;
+    color:#171717;
+}
+
+header{
+    background:#050505;
+    color:white;
+    padding:18px 7%;
+    display:flex;
+    justify-content:space-between;
+    align-items:center;
+    position:sticky;
+    top:0;
+    z-index:100;
+}
+
+.logo{
+    font-family:Georgia, serif;
+    font-size:28px;
+    letter-spacing:3px;
+}
+
+.logo span{
+    font-size:11px;
+    display:block;
+    letter-spacing:4px;
+    color:#aaa;
+    margin-top:3px;
+}
+
+nav a{
+    color:white;
+    text-decoration:none;
+    margin-left:25px;
+    font-size:14px;
+}
+
+.hero{
+    min-height:88vh;
+    background:
+    linear-gradient(rgba(0,0,0,.65),rgba(0,0,0,.75)),
+    url("https://images.unsplash.com/photo-1599643478518-a784e5dc4c8f?auto=format&fit=crop&w=1600&q=80");
+    background-size:cover;
+    background-position:center;
+    color:white;
+    display:flex;
+    align-items:center;
+    justify-content:center;
+    text-align:center;
+    padding:30px;
+}
+
+.hero-content{
+    max-width:850px;
+}
+
+.hero-small{
+    letter-spacing:5px;
+    font-size:12px;
+    margin-bottom:20px;
+    color:#ddd;
+}
+
+.hero h1{
+    font-family:Georgia, serif;
+    font-size:60px;
+    font-weight:400;
+    margin-bottom:20px;
+}
+
+.hero p{
+    color:#ddd;
+    line-height:1.8;
+    font-size:17px;
+}
+
+.btn{
+    display:inline-block;
+    margin-top:30px;
+    background:white;
+    color:black;
+    padding:15px 30px;
+    text-decoration:none;
+    font-weight:bold;
+    font-size:13px;
+    letter-spacing:1px;
+}
+
+.section{
+    padding:90px 7%;
+}
+
+.section-title{
+    text-align:center;
+    margin-bottom:50px;
+}
+
+.section-title p{
+    letter-spacing:4px;
+    font-size:11px;
+    color:#777;
+    margin-bottom:10px;
+}
+
+.section-title h2{
+    font-family:Georgia, serif;
+    font-size:40px;
+    font-weight:400;
+}
+
+.categories{
+    display:grid;
+    grid-template-columns:repeat(2,1fr);
+    gap:25px;
+}
+
+.category{
+    min-height:450px;
+    display:flex;
+    align-items:flex-end;
+    position:relative;
+    overflow:hidden;
+    background:#111;
+}
+
+.category img{
+    width:100%;
+    height:450px;
+    object-fit:cover;
+    opacity:.75;
+    transition:.5s;
+}
+
+.category:hover img{
+    transform:scale(1.05);
+}
+
+.category-text{
+    position:absolute;
+    color:white;
+    padding:35px;
+}
+
+.category-text h3{
+    font-family:Georgia, serif;
+    font-size:32px;
+    font-weight:400;
+}
+
+.category-text p{
+    margin-top:10px;
+    color:#ddd;
+}
+
+.inventory{
+    background:#f6f6f4;
+}
+
+.diamonds{
+    display:grid;
+    grid-template-columns:repeat(3,1fr);
+    gap:25px;
+}
+
+.card{
+    background:white;
+    padding:15px;
+}
+
+.card-image{
+    height:280px;
+    background:#eee;
+    display:flex;
+    align-items:center;
+    justify-content:center;
+    overflow:hidden;
+}
+
+.card-image img{
+    width:100%;
+    height:100%;
+    object-fit:cover;
+}
+
+.card-info{
+    padding:20px 5px;
+}
+
+.tag{
+    font-size:10px;
+    letter-spacing:2px;
+    color:#777;
+}
+
+.card h3{
+    margin-top:10px;
+    font-family:Georgia, serif;
+    font-size:22px;
+    font-weight:400;
+}
+
+.specs{
+    color:#666;
+    font-size:14px;
+    margin-top:10px;
+    line-height:1.7;
+}
+
+.inquire{
+    display:block;
+    text-align:center;
+    border:1px solid #111;
+    padding:12px;
+    margin-top:18px;
+    text-decoration:none;
+    color:#111;
+    font-size:13px;
+}
+
+.inquire:hover{
+    background:#111;
+    color:white;
+}
+
+.about{
+    background:#080808;
+    color:white;
+    text-align:center;
+}
+
+.about-content{
+    max-width:800px;
+    margin:auto;
+}
+
+.about h2{
+    font-family:Georgia, serif;
+    font-size:42px;
+    font-weight:400;
+    margin-bottom:25px;
+}
+
+.about p{
+    color:#bbb;
+    line-height:2;
+}
+
+.features{
+    display:grid;
+    grid-template-columns:repeat(3,1fr);
+    margin-top:60px;
+    gap:30px;
+}
+
+.feature{
+    border-top:1px solid #444;
+    padding-top:25px;
+}
+
+.feature h3{
+    font-family:Georgia,serif;
+    font-weight:400;
+    margin-bottom:10px;
+}
+
+.contact{
+    text-align:center;
+}
+
+.contact h2{
+    font-family:Georgia,serif;
+    font-size:42px;
+    font-weight:400;
+}
+
+.contact p{
+    color:#666;
+    margin-top:15px;
+}
+
+.whatsapp{
+    display:inline-block;
+    background:#111;
+    color:white;
+    text-decoration:none;
+    padding:16px 35px;
+    margin-top:30px;
+}
+
+footer{
+    background:#050505;
+    color:#888;
+    padding:40px 7%;
+    text-align:center;
+    font-size:13px;
+}
+
+footer strong{
+    color:white;
+    letter-spacing:2px;
+}
+
+@media(max-width:800px){
+
+    nav{
+        display:none;
+    }
+
+    .hero h1{
+        font-size:42px;
+    }
+
+    .categories{
+        grid-template-columns:1fr;
+    }
+
+    .diamonds{
+        grid-template-columns:1fr;
+    }
+
+    .features{
+        grid-template-columns:1fr;
+    }
+
+    .section{
+        padding:65px 6%;
+    }
+}
+</style>
+</head>
+
+<body>
+
+<header>
+
+<div class="logo">
+APEXGEMS
+<span>FINE DIAMONDS</span>
+</div>
+
+<nav>
+<a href="#home">Home</a>
+<a href="#collections">Diamonds</a>
+<a href="#inventory">Inventory</a>
+<a href="#about">About</a>
+<a href="#contact">Contact</a>
+</nav>
+
+</header>
+
+
+<section class="hero" id="home">
+
+<div class="hero-content">
+
+<div class="hero-small">
+NATURAL • LAB GROWN • FINE DIAMONDS
+</div>
+
+<h1>Exceptional Diamonds.<br>Timeless Beauty.</h1>
+
+<p>
+Discover carefully selected natural and lab-grown diamonds
+from Apexgems. Beautiful stones, professional service and
+worldwide enquiries.
+</p>
+
+<a class="btn" href="#collections">
+EXPLORE DIAMONDS
+</a>
+
+</div>
+
+</section>
+
+
+<section class="section" id="collections">
+
+<div class="section-title">
+
+<p>OUR COLLECTION</p>
+
+<h2>Find Your Diamond</h2>
+
+</div>
+
+
+<div class="categories">
+
+
+<div class="category">
+
+<img src="https://images.unsplash.com/photo-1617038260897-41a1f14a8ca0?auto=format&fit=crop&w=1000&q=80">
+
+<div class="category-text">
+
+<h3>Natural Diamonds</h3>
+
+<p>Rare. Authentic. Created by nature.</p>
+
+</div>
+
+</div>
+
+
+<div class="category">
+
+<img src="https://images.unsplash.com/photo-1605100804763-247f67b3557e?auto=format&fit=crop&w=1000&q=80">
+
+<div class="category-text">
+
+<h3>Lab-Grown Diamonds</h3>
+
+<p>Modern diamonds with exceptional brilliance.</p>
+
+</div>
+
+</div>
+
+
+</div>
+
+</section>
+
+
+<section class="section inventory" id="inventory">
+
+<div class="section-title">
+
+<p>FEATURED INVENTORY</p>
+
+<h2>Available Diamonds</h2>
+
+</div>
+
+
+<div class="diamonds">
+
+
+<div class="card">
+
+<div class="card-image">
+<img src="https://images.unsplash.com/photo-1603561596112-db1d3142648c?auto=format&fit=crop&w=800&q=80">
+</div>
+
+<div class="card-info">
+
+<div class="tag">LAB GROWN • IGI CERTIFIED</div>
+
+<h3>4.29ct Marquise Diamond</h3>
+
+<div class="specs">
+H Color • VVS2 Clarity<br>
+IGI Certified
+</div>
+
+<a class="inquire"
+href="https://wa.me/917069756526?text=Hello%20Apexgems,%20I%20am%20interested%20in%20the%204.29ct%20Marquise%20Diamond">
+INQUIRE ON WHATSAPP
+</a>
+
+</div>
+
+</div>
+
+
+<div class="card">
+
+<div class="card-image">
+<img src="https://images.unsplash.com/photo-1608042314453-ae338d80c427?auto=format&fit=crop&w=800&q=80">
+</div>
+
+<div class="card-info">
+
+<div class="tag">LAB GROWN • IGI CERTIFIED</div>
+
+<h3>6.59ct Old Mine Cushion</h3>
+
+<div class="specs">
+G Color • VS1 Clarity<br>
+IGI Certified
+</div>
+
+<a class="inquire"
+href="https://wa.me/917069756526?text=Hello%20Apexgems,%20I%20am%20interested%20in%20the%206.59ct%20diamond">
+INQUIRE ON WHATSAPP
+</a>
+
+</div>
+
+</div>
+
+
+<div class="card">
+
+<div class="card-image">
+<img src="https://images.unsplash.com/photo-1611652022419-a9419f74343d?auto=format&fit=crop&w=800&q=80">
+</div>
+
+<div class="card-info">
+
+<div class="tag">NATURAL DIAMOND</div>
+
+<h3>Natural Diamond Collection</h3>
+
+<div class="specs">
+Multiple Shapes • Sizes & Grades<br>
+Contact for current inventory
+</div>
+
+<a class="inquire"
+href="https://wa.me/917069756526?text=Hello%20Apexgems,%20please%20send%20me%20your%20natural%20diamond%20inventory">
+VIEW AVAILABILITY
+</a>
+
+</div>
+
+</div>
+
+
+</div>
+
+</section>
+
+
+<section class="section about" id="about">
+
+<div class="about-content">
+
+<h2>About Apexgems</h2>
+
+<p>
+Apexgems is an India-based diamond manufacturer and dealer
+specializing in natural and lab-grown diamonds.
+
+Our focus is providing beautiful diamonds with transparent
+specifications, professional service and worldwide availability.
+
+Whether you are searching for a diamond for an engagement ring,
+a custom jewelry project or your collection, our team can help
+you find the right stone.
+</p>
+
+
+<div class="features">
+
+<div class="feature">
+<h3>Certified Diamonds</h3>
+<p>Certified stones available with detailed specifications.</p>
+</div>
+
+<div class="feature">
+<h3>Worldwide Service</h3>
+<p>Serving diamond buyers internationally.</p>
+</div>
+
+<div class="feature">
+<h3>Direct Enquiries</h3>
+<p>Contact us directly for inventory, videos and pricing.</p>
+</div>
+
+</div>
+
+</div>
+
+</section>
+
+
+<section class="section contact" id="contact">
+
+<h2>Looking for a Diamond?</h2>
+
+<p>
+Tell us the shape, carat, color, clarity and budget you are looking for.
+</p>
+
+<a class="whatsapp"
+href="https://wa.me/917069756526?text=Hello%20Apexgems,%20I%20am%20looking%20for%20a%20diamond">
+CONTACT ON WHATSAPP
+</a>
+
+</section>
+
+
+<footer>
+
+<strong>APEXGEMS</strong>
+
+<br><br>
+
+Natural Diamonds • Lab-Grown Diamonds • Worldwide Enquiries
+
+<br><br>
+
+© 2026 Apexgems. All Rights Reserved.
+
+</footer>
+
+</body>
+</html>
+
