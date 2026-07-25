@@ -399,6 +399,65 @@ footer strong{
     }
 }
 
+    /* DIAMOND FILTER BAR */
+
+.diamond-filters {
+    max-width: 1290px;
+    margin: 0 auto 45px;
+    display: grid;
+    grid-template-columns: 2fr 1fr 1fr 1fr 1.3fr;
+    gap: 12px;
+}
+
+.diamond-filters input,
+.diamond-filters select {
+    width: 100%;
+    padding: 15px 16px;
+    background: #ffffff;
+    border: 1px solid #d8d8d8;
+    color: #171717;
+    font-family: Arial, Helvetica, sans-serif;
+    font-size: 13px;
+    outline: none;
+    transition: 0.2s ease;
+}
+
+.diamond-filters input:focus,
+.diamond-filters select:focus {
+    border-color: #171717;
+}
+
+.diamond-filters input::placeholder {
+    color: #777;
+}
+
+.diamond-filters select {
+    cursor: pointer;
+}
+
+/* TABLET */
+@media (max-width: 900px) {
+    .diamond-filters {
+        grid-template-columns: 1fr 1fr;
+    }
+
+    #diamondSearch {
+        grid-column: 1 / -1;
+    }
+}
+
+/* MOBILE */
+@media (max-width: 600px) {
+    .diamond-filters {
+        grid-template-columns: 1fr;
+        margin-bottom: 30px;
+    }
+
+    #diamondSearch {
+        grid-column: auto;
+    }
+}
+    
 </style>
 </head>
 
@@ -480,7 +539,50 @@ and contact us directly for enquiries and availability.
 <h2>Available Diamonds</h2>
 </div>
 
+<!-- DIAMOND FILTERS -->
+<div class="diamond-filters">
 
+    <input type="text" id="diamondSearch" placeholder="Search diamonds...">
+
+    <select id="shapeFilter">
+        <option value="">All Shapes</option>
+        <option value="Cushion">Cushion</option>
+        <option value="Pear">Pear</option>
+        <option value="Oval">Oval</option>
+        <option value="Round">Round</option>
+        <option value="Emerald">Emerald</option>
+        <option value="Marquise">Marquise</option>
+    </select>
+
+    <select id="colorFilter">
+        <option value="">All Colors</option>
+        <option value="D">D</option>
+        <option value="E">E</option>
+        <option value="F">F</option>
+        <option value="G">G</option>
+        <option value="H">H</option>
+        <option value="I">I</option>
+        <option value="J">J</option>
+    </select>
+
+    <select id="clarityFilter">
+        <option value="">All Clarities</option>
+        <option value="VVS1">VVS1</option>
+        <option value="VVS2">VVS2</option>
+        <option value="VS1">VS1</option>
+        <option value="VS2">VS2</option>
+    </select>
+
+    <select id="sortFilter">
+        <option value="">Sort By</option>
+        <option value="price-low">Price: Low to High</option>
+        <option value="price-high">Price: High to Low</option>
+        <option value="carat-low">Carat: Low to High</option>
+        <option value="carat-high">Carat: High to Low</option>
+    </select>
+
+</div>
+    
 <div class="diamonds">
 
 
@@ -791,5 +893,99 @@ Lab-Grown Fine Diamonds<br><br>
 
 </footer>
 
+    <script>
+const searchInput = document.getElementById("diamondSearch");
+const shapeFilter = document.getElementById("shapeFilter");
+const colorFilter = document.getElementById("colorFilter");
+const clarityFilter = document.getElementById("clarityFilter");
+const sortFilter = document.getElementById("sortFilter");
+
+const diamondContainer = document.querySelector(".diamonds");
+
+function getCards() {
+    return Array.from(diamondContainer.querySelectorAll(".card"));
+}
+
+function filterDiamonds() {
+
+    const search = searchInput.value.toLowerCase().trim();
+    const shape = shapeFilter.value.toLowerCase();
+    const color = colorFilter.value.toLowerCase();
+    const clarity = clarityFilter.value.toLowerCase();
+
+    getCards().forEach(card => {
+
+        const text = card.innerText.toLowerCase();
+
+        const searchMatch =
+            search === "" || text.includes(search);
+
+        const shapeMatch =
+            shape === "" || text.includes(shape);
+
+        const colorMatch =
+            color === "" || text.includes(color + " color");
+
+        const clarityMatch =
+            clarity === "" || text.includes(clarity);
+
+        if (searchMatch && shapeMatch && colorMatch && clarityMatch) {
+            card.style.display = "";
+        } else {
+            card.style.display = "none";
+        }
+    });
+}
+
+function sortDiamonds() {
+
+    const cards = getCards();
+    const sort = sortFilter.value;
+
+    cards.sort((a, b) => {
+
+        const textA = a.innerText;
+        const textB = b.innerText;
+
+        const priceA = parseFloat(
+            (textA.match(/\$[\d,]+(?:\.\d+)?/) || ["$0"])[0]
+                .replace("$", "")
+                .replace(",", "")
+        );
+
+        const priceB = parseFloat(
+            (textB.match(/\$[\d,]+(?:\.\d+)?/) || ["$0"])[0]
+                .replace("$", "")
+                .replace(",", "")
+        );
+
+        const caratA = parseFloat(
+            (textA.match(/[\d.]+\s*(?:ct|carat)/i) || ["0"])[0]
+        );
+
+        const caratB = parseFloat(
+            (textB.match(/[\d.]+\s*(?:ct|carat)/i) || ["0"])[0]
+        );
+
+        if (sort === "price-low") return priceA - priceB;
+        if (sort === "price-high") return priceB - priceA;
+        if (sort === "carat-low") return caratA - caratB;
+        if (sort === "carat-high") return caratB - caratA;
+
+        return 0;
+    });
+
+    cards.forEach(card => diamondContainer.appendChild(card));
+
+    filterDiamonds();
+}
+
+searchInput.addEventListener("input", filterDiamonds);
+shapeFilter.addEventListener("change", filterDiamonds);
+colorFilter.addEventListener("change", filterDiamonds);
+clarityFilter.addEventListener("change", filterDiamonds);
+sortFilter.addEventListener("change", sortDiamonds);
+</script>
+    
 </body>
 </html>
