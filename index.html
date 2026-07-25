@@ -456,6 +456,28 @@ footer strong{
         grid-column: auto;
     }
 }
+
+    .product-link {
+    color: inherit;
+    text-decoration: none;
+}
+
+.product-link:hover {
+    text-decoration: underline;
+}
+
+.card-image a {
+    display: block;
+    width: 100%;
+    height: 100%;
+}
+
+.card-image a img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    cursor: pointer;
+}
     
 </style>
 </head>
@@ -590,8 +612,10 @@ and contact us directly for enquiries and availability.
 <div class="card">
 
 <div class="card-image">
-<img src="diamond1.jpg"
-alt="5.39ct Cushion Lab-Grown Diamond">
+    <a href="diamond1.html">
+        <img src="diamond1.jpg"
+        alt="5.39ct Cushion Lab-Grown Diamond">
+    </a>
 </div>
 
 <div class="card-info">
@@ -600,7 +624,11 @@ alt="5.39ct Cushion Lab-Grown Diamond">
 LAB GROWN • IGI CERTIFIED
 </div>
 
-<h3>5.39ct Cushion Lab-Grown Diamond</h3>
+<h3>
+    <a href="diamond1.html" class="product-link">
+        5.39ct Cushion Lab-Grown Diamond
+    </a>
+</h3>
 
 <div class="specs">
 5.39 Carat • Cushion Cut<br>
