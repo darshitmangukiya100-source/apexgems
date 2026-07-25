@@ -478,6 +478,43 @@ footer strong{
     object-fit: cover;
     cursor: pointer;
 }
+
+    /* DIAMOND CATEGORY BUTTONS */
+
+.diamond-category {
+    display: flex;
+    justify-content: center;
+    gap: 12px;
+    margin: 0 auto 25px;
+}
+
+.category-btn {
+    background: white;
+    color: #171717;
+    border: 1px solid #171717;
+    padding: 13px 28px;
+    font-size: 12px;
+    letter-spacing: 1.5px;
+    cursor: pointer;
+    transition: 0.3s;
+}
+
+.category-btn:hover,
+.category-btn.active {
+    background: #171717;
+    color: white;
+}
+
+@media (max-width: 600px) {
+    .diamond-category {
+        flex-direction: column;
+        padding: 0 20px;
+    }
+
+    .category-btn {
+        width: 100%;
+    }
+}
     
 </style>
 </head>
@@ -558,6 +595,11 @@ and contact us directly for enquiries and availability.
 <div class="section-heading">
 <p>FEATURED INVENTORY</p>
 <h2>Available Diamonds</h2>
+</div> 
+
+    <div class="diamond-category">
+    <button class="category-btn active" onclick="showLabDiamonds()">LAB-GROWN DIAMONDS</button>
+    <button class="category-btn" onclick="showNaturalDiamonds()">NATURAL DIAMONDS</button>
 </div>
 
 <!-- DIAMOND FILTERS -->
@@ -604,7 +646,7 @@ and contact us directly for enquiries and availability.
 
 </div>
     
-<div class="diamonds">
+<div class="diamonds" id="labDiamonds">
 
 
 <!-- DIAMOND 1 -->
@@ -837,7 +879,14 @@ INQUIRE ON WHATSAPP
 
 </div>
     
+<!-- NATURAL DIAMONDS -->
 
+<div class="diamonds natural-diamonds" id="naturalDiamonds" style="display:none;">
+
+    <!-- Natural diamond cards will go here -->
+
+</div>
+    
 </div>
 </section>
 
@@ -1018,6 +1067,24 @@ shapeFilter.addEventListener("change", filterDiamonds);
 colorFilter.addEventListener("change", filterDiamonds);
 clarityFilter.addEventListener("change", filterDiamonds);
 sortFilter.addEventListener("change", sortDiamonds);
+</script>
+
+    <script>
+function showLabDiamonds() {
+    document.getElementById("labDiamonds").style.display = "grid";
+    document.getElementById("naturalDiamonds").style.display = "none";
+
+    document.querySelectorAll(".category-btn")[0].classList.add("active");
+    document.querySelectorAll(".category-btn")[1].classList.remove("active");
+}
+
+function showNaturalDiamonds() {
+    document.getElementById("labDiamonds").style.display = "none";
+    document.getElementById("naturalDiamonds").style.display = "grid";
+
+    document.querySelectorAll(".category-btn")[0].classList.remove("active");
+    document.querySelectorAll(".category-btn")[1].classList.add("active");
+}
 </script>
     
 </body>
